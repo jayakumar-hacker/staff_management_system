@@ -36,7 +36,7 @@ def add_staff(name,email,salary,role,department):
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("""
-    INSERT INTO STAFF (name,email,role,salary,department) values
+    INSERT INTO STAFF (name,email,salary,role,department) values
     (?,?,?,?,?)
     """,(name,email,salary,role,department))
     conn.commit()
@@ -70,6 +70,8 @@ def update_staff(staff_id,name,email,salary,role,department):
     """,(name,email,salary,role,department,staff_id))
     conn.commit()
     conn.close()
+
+
 def delete_staff(staff_id):
     conn = get_connection()
     cursor = conn.cursor()
@@ -94,4 +96,4 @@ def verify_admin(username):
 
     result = cursor.fetchone()
     conn.close()
-    return result
+    return result[0]
