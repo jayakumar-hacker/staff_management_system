@@ -19,7 +19,6 @@ def check_pass(username,password):
         raise ValueError("Username or Password Invalid")
     hash = verify_admin(username)
     return bcrypt.checkpw(password.encode(),hash)
-    # return hash
 
 
 
